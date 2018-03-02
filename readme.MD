@@ -1,19 +1,36 @@
 # mysql57
 
-```
-docker pull mysql/mysql-server:5.7
-docker run --name=mysql57 --rm -d mysql/mysql-server:5.7
-docker inspect mysql57
-```
+Docker + Ubuntu-16.04 + Mysql-5.7
 
+Parameter
+MYSQL_ROOT_PWD : root Password default "mysql"
+MYSQL_USER : new User
+MYSQL_USER_PWD : new User Password
+MYSQL_USER_DB : new Database for new User
+
+## Build image
+`docker build --tag lasellers/mysql57 .`
+
+## Run with random password
+docker run --rm -d -p 3306:3306 --name=mysql57 lasellers/mysql57
 `docker logs mysql57` (get mysql password)
 `docker exec -it mysql57 "mysql -u root -p"`
-cyR3Dl4z*uB*YDOwIx,@P8ynis0
+iJ$EsUhovYPpUHOdH@zW0KXeRM4
 
-`ALTER USER 'root'@'localhost' IDENTIFIED BY 'dante';`
+`ALTER USER 'root'@'localhost' IDENTIFIED BY 'dev';`
 
-As of MySQL 5.7.6, use: `ALTER USER user IDENTIFIED BY 'dante';`
-Before 5.7.6, use: `SET PASSWORD FOR user = PASSWORD('dante');`
+As of MySQL 5.7.6, use: `ALTER USER user IDENTIFIED BY 'dev';`
+Before 5.7.6, use: `SET PASSWORD FOR user = PASSWORD('dev');`
+
+## Run auto
+`docker run --name mysql57 -v /var/docker_data/mysql/data/:/var/lib/mysql -d `
+
+## Run with username + password
+// `docker run --name mysql57 --rm -d -v /var/docker_data/mysql/data/:/var/lib/mysql -p 3306:3306 -e // MYSQL_ROOT_PWD=dev -e MYSQL_USER=dev -e MYSQL_USER_PWD=dev lasellers/mysql57`
+
+## Details
+`docker inspect mysql57`
+
 
 ## Example SQL statements
 ```
