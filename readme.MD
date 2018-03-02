@@ -1,6 +1,6 @@
 # mysql57
 
-Docker + Ubuntu-16.04 + Mysql-5.7
+Docker + Oracle + Mysql-5.7
 
 Parameter
 MYSQL_ROOT_PWD : root Password default "mysql"
@@ -21,12 +21,6 @@ iJ$EsUhovYPpUHOdH@zW0KXeRM4
 
 As of MySQL 5.7.6, use: `ALTER USER user IDENTIFIED BY 'dev';`
 Before 5.7.6, use: `SET PASSWORD FOR user = PASSWORD('dev');`
-
-## Run auto
-`docker run --name mysql57 -v /var/docker_data/mysql/data/:/var/lib/mysql -d `
-
-## Run with username + password
-// `docker run --name mysql57 --rm -d -v /var/docker_data/mysql/data/:/var/lib/mysql -p 3306:3306 -e // MYSQL_ROOT_PWD=dev -e MYSQL_USER=dev -e MYSQL_USER_PWD=dev lasellers/mysql57`
 
 ## Details
 `docker inspect mysql57`
